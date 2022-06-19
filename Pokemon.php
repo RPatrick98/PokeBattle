@@ -38,3 +38,29 @@ class pokemon {
 	}
 
 }
+
+class Pickachu extends Pokemon {
+	public function __construct($name, $hitPoints, $health, $attacks) {
+		parent::__construct($name, $hitPoints, $health);
+		$this->energyType = "Electric";
+		$this->weakness = "Fire";
+		$this->resistance = "Fighting";
+		$this->attack = $attacks;
+	}
+
+	public function __toString() {
+		return json_encode($this);
+	}
+}
+
+
+
+class Charmander extends Pokemon {
+	public function __construct($name, $hitPoints, $health, $attacks){
+        parent::__construct($name,$hitPoints,$health);
+        $this->energyType = "Fire";
+        $this->weakness = "Water";
+        $this->resistance = "Grass";
+        $this->attacks = $attacks;
+    }
+}
