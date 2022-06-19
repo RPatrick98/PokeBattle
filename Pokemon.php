@@ -63,4 +63,9 @@ class Charmander extends Pokemon {
         $this->resistance = "Grass";
         $this->attacks = $attacks;
     }
+
+    public function __toString(){
+        return json_encode($this);
+    }
+
 }
