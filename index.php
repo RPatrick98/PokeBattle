@@ -6,7 +6,7 @@ require 'pokeStats/Resistance.php';
 require 'pokeStats/Weakness.php';
 require 'pokemon.php';
 
-// pikachu class maken die helemaal is uitgewerkt
+
 
 /*heeft een zelf te verzinnen naam
 is van het EnergyType "Lightning"
@@ -36,10 +36,6 @@ $charmeleon  = new pokemon(
     new resistance("Lightning", 10)
 );
 
-//var_dump($pikachu, $charmeleon);
-
-
-//$pikachu->changeName('raaf');
 
 
 /* Als je klaar bent met het aanmaken van de classes laat je de pokemon als volgt tegen elkaar vechten:
