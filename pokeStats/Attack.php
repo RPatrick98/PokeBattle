@@ -8,13 +8,13 @@ class attack{
         $this->name = $name;
         $this->damage = $damage;
     }
-         //If the weakness energytpe is equal to the energy type of the attacking pokemon, the damage x the multiplier is done.
+         //Als de weaknes energytpe gelijk is aan het energietype van de aanvallende pokemon, is de schade x de vermenigvuldiger aangericht.
     public function multiplyDamage($Multiplier)
     {
         $this->damage = $this->damage * $Multiplier;
     }
 
-    //If the resistance energy type is equal to the energy type of the attacking pokemon, the damage - resistance is done.
+    //Als het resistance gelijk is aan het energietype van de aanvallende pokemon, is de schade - resistance aangericht.
     public function reduceDamage($resistance)
     {
         $this->damage = $this->damage - $resistance;

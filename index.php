@@ -1,8 +1,9 @@
 <?php
-spl_autoload_register(function ($class_name) {
-    require 'pokeStats/' . $class_name . '.php';
-});
 
+require 'pokeStats/Attack.php';
+require 'pokeStats/EnergyType.php';
+require 'pokeStats/Resistance.php';
+require 'pokeStats/Weakness.php';
 require 'pokemon.php';
 
 // pikachu class maken die helemaal is uitgewerkt

@@ -20,6 +20,8 @@ class pokemon {
         self::$pokemonAliveCounter++;
     }
 
+
+    //Function die er Pokemons tegenelkaat laat vechten
     public function attack($target, $attack){
         $damage = $this->attacks[$attack]->getAttackDamage();
         print_r($target->name . " Has " . $target->hitpoints . " Health <br> ");
