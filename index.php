@@ -1,6 +1,11 @@
-<?
+<?php
 
 require 'Pokemon.php';
+require 'Attack.php';
+require 'EnergyType.php';
+require 'Weakness.php';
+require 'Resistance.php';
+
 // $pickachu = new Pickachu('Pickachu', 60, [array("name" => "Electric Ring", "damage" => 50),array("name" => "Pika Punch", "damage" => 20)], array("type" => "fire", "multiplier" => 1.5), array("type" => "Fighting", "value" => 20));
 $pickachu = new Pickachu('Pickachu', 60, 60, [array("name" => "Electric Ring", "damage" => 50),array("name" => "Pika Punch", "damage" => 20)]);
 $charmander = new Charmander('Pickachu', 60, 60,[array("name" => "Head Butt", "damage" => 10),array("name" => "Flare", "damage" => 30)]);

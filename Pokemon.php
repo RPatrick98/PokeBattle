@@ -1,13 +1,17 @@
-<?
+<?php
+
+
+
 
 class Pokemon{
     private static $alive;
-    public $name; 
-    public $energyType;
-    public $hitPoints;
-    public $weakness;
-    public $attacks;
-    public $resistance;
+    private $name; 
+    private $energyType;
+    private $hitPoints;
+    private $weakness;
+    private $attacks;
+    private
+     $resistance;
     
     public function __construct($name, $hitPoints, $health){
         $this->name = $name;
@@ -47,6 +51,8 @@ class Pokemon{
     
     }
 
+   
+
 }
 
 
@@ -54,7 +60,8 @@ class Pokemon{
 class Pickachu extends Pokemon{
     public function __construct($name, $hitPoints, $health, $attacks){
         parent::__construct($name,$hitPoints,$health);
-        $this->energyType = "Electric";
+        $this->$name = "Pikachu";
+        $this->energyType = "Lightning";
         $this->weakness = "Fire";
         $this->resistance = "Fighting";
         $this->attacks = $attacks;
@@ -69,6 +76,7 @@ class Pickachu extends Pokemon{
 class Charmander extends Pokemon{
     public function __construct($name, $hitPoints, $health, $attacks){
         parent::__construct($name,$hitPoints,$health);
+        $this->$name = "Charmander";
         $this->energyType = "Fire";
         $this->weakness = "Water";
         $this->resistance = "Grass";
