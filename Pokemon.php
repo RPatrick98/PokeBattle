@@ -1,90 +1,50 @@
 <?php
 
-
-
-
-class Pokemon{
-    private static $alive;
-    private $name; 
+class pokemon {
+    private $name;
     private $energyType;
-    private $hitPoints;
-    private $weakness;
+    private $hitpoints;
     private $attacks;
-    private
-     $resistance;
-    
-    public function __construct($name, $hitPoints, $health){
+    private $weakness;
+    private $resistance;
+    public static $pokemonAliveCounter = 0;
+
+    public function __construct($name, $energyType, $hitpoints, $attacks, $weakness, $resistance)
+    {
         $this->name = $name;
-        $this->hitPoints = $hitPoints;
-        $this->health = $health;
-        self::$alive = self::$alive += 1;
-    }
-    
-    public function getPopulation(){
-        return self::$alive;
-    }
-
-    public function __toString(){
-        return json_encode($this);
-    }
-
- 
-
-
-    public function attack($attack, $defender){
-     
-        if($this->energyType == $defender->weakness){
-            $defender->hitPoints -= $attack['damage'] * 1.5;
-        
-        }
-        else if($this->energyType == $defender->resistance){
-            $defender->hitPoints -= $attack['damage'] * 0.5;
-
-        }
-        else{
-            $defender->hitPoints -= $attack['damage'];
-        }
-        if ($defender->hitPoints <= 0){
-            echo($defender->name." has fainted");
-            self::$alive = self::$alive -= 1;
-        }
-    
-    }
-
-   
-
-}
-
-
-
-class Pickachu extends Pokemon{
-    public function __construct($name, $hitPoints, $health, $attacks){
-        parent::__construct($name,$hitPoints,$health);
-        $this->$name = "Pikachu";
-        $this->energyType = "Lightning";
-        $this->weakness = "Fire";
-        $this->resistance = "Fighting";
+        $this->energyType = $energyType;
+        $this->hitpoints = $hitpoints;
         $this->attacks = $attacks;
-    }
-    
-    public function __toString(){
-        return json_encode($this);
+        $this->weakness = $weakness;
+        $this->resistance = $resistance;
+        self::$pokemonAliveCounter++;
     }
 
+    public function attack($target, $attack){
+        $damage = $this->attacks[$attack]->getAttackDamage();
+        print_r($target->name . " Has " . $target->hitpoints . " Health <br> ");
+
+        if ($this->energyType->getname() == $target->weakness->getWeaknessType()) {
+            $damage = $damage * $target->weakness->getWeaknessValue();
+        }
+        if ($this->energyType->getname() == $target->resistance->getResistanceType()) {
+            $damage -= $target->resistance->getResistanceValue();
+        }
+        $target->hitpoints -= $damage;
+        if ($target->hitpoints <= 0){
+            self::$pokemonAliveCounter--;
+        }
+
+        print_r($this->name . " attacks " . $target->name . " with " . $this->attacks[$attack]->getAttackName() . " attack dealing " . $damage . " Damage <br>" );
+        print_r($target->name . " Has " . $target->hitpoints . " Health left <br><br> ");
+    }
+
+
+    public function returnPokemonPopulation(){
+        print_r("Pokemon's alive at the moment " . self::$pokemonAliveCounter);
+    }
 }
+?>
 
-class Charmander extends Pokemon{
-    public function __construct($name, $hitPoints, $health, $attacks){
-        parent::__construct($name,$hitPoints,$health);
-        $this->$name = "Charmander";
-        $this->energyType = "Fire";
-        $this->weakness = "Water";
-        $this->resistance = "Grass";
-        $this->attacks = $attacks;
-    }
-    
-    public function __toString(){
-        return json_encode($this);
-    }
 
-}
+

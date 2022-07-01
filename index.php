@@ -1,34 +1,52 @@
 <?php
+spl_autoload_register(function ($class_name) {
+    require 'pokeStats/' . $class_name . '.php';
+});
 
-require 'Pokemon.php';
-require 'Attack.php';
-require 'EnergyType.php';
-require 'Weakness.php';
-require 'Resistance.php';
+require 'pokemon.php';
 
-// $pickachu = new Pickachu('Pickachu', 60, [array("name" => "Electric Ring", "damage" => 50),array("name" => "Pika Punch", "damage" => 20)], array("type" => "fire", "multiplier" => 1.5), array("type" => "Fighting", "value" => 20));
-$pickachu = new Pickachu('Pickachu', 60, 60, [array("name" => "Electric Ring", "damage" => 50),array("name" => "Pika Punch", "damage" => 20)]);
-$charmander = new Charmander('Pickachu', 60, 60,[array("name" => "Head Butt", "damage" => 10),array("name" => "Flare", "damage" => 30)]);
+// pikachu class maken die helemaal is uitgewerkt
 
-
-echo("Pickachu has ".$pickachu->hitPoints ."hp");
-echo("</br>");
-echo("Charmander has ".$charmander->hitPoints . "hp");
-echo("</br>");
-
-//name, enerytype, hp, weakness, attacks (array), resistance\
-echo("Pikachu attacks Charmander with Electric Ring attack ");
-echo("</br>");
-
-$pickachu->attack($pickachu->attacks[0],$charmander);
-echo("Charmander has " . $charmander->hitPoints . "/" . $charmander->health ."hp left");
-echo("</br>");
-
-echo("Pikachu attacks with Flare attack ");
-echo("</br>");
-
- $charmander->attack($charmander->attacks[1],$pickachu);
- echo("Pickachu has " . $pickachu->hitPoints . "/" . $pickachu->health ."hp</br>");
+/*heeft een zelf te verzinnen naam
+is van het EnergyType "Lightning"
+heeft 60 hitpoints
+heeft 2 attacks
+Electric Ring doet 50 schade
+Pika Punch doet 20 schade
+heeft een Weakness EnergyType "Fire" met een multiplier van 1,5
+heeft een Resistance EnergyType "Fighting" met een waarde van 20*/
 
 
- echo "Alive Pokemons " . Pokemon::getPopulation();
+$pikachu = new pokemon(
+    "Pickachu", 
+    new energyType("Lightning"),
+    "60",
+    [new attack("Electric Ring", 50), new attack("Pika Punch", 20)],
+    new weakness("Fire", 1.5),
+    new resistance("Fighting", 20)
+);
+
+$charmeleon  = new pokemon(
+    "Charmeleon",
+    new energyType("Fire"),
+    "60",
+    [new attack("Head Butt", 10), new attack("Flare", 30)],
+    new weakness("Water", 2),
+    new resistance("Lightning", 10)
+);
+
+//var_dump($pikachu, $charmeleon);
+
+
+//$pikachu->changeName('raaf');
+
+
+/* Als je klaar bent met het aanmaken van de classes laat je de pokemon als volgt tegen elkaar vechten:
+Pikachu valt Charmeleon aan met een Electric Ring attack
+Charmeleon valt Pikachu aan met een Flare attack
+Print voor en na de aanval de health uit van de pokemon die wordt aangevallen.*/
+
+$pikachu->attack($charmeleon, 0); 
+$charmeleon->attack($pikachu, 1);
+
+pokemon::returnPokemonPopulation();
