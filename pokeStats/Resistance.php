@@ -1,7 +1,6 @@
 <?php
 
 class resistance{
-
     private $energyType;
     private $value;
     
@@ -10,11 +9,11 @@ class resistance{
         $this->value = $value;
     }
 
-    public function getresistanceType()
+    public function getResistanceType()
     {
         return $this->energyType;
     }
-    public function getresistanceValue()
+    public function getResistanceValue()
     {
         return $this->value;
     }

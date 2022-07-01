@@ -23,8 +23,9 @@ class pokemon {
 
     //Function die er Pokemons tegen elkaar laat vechten
     public function attack($target, $attack){
+        
         $damage = $this->attacks[$attack]->getAttackDamage();
-        print_r($target->name . " Has " . $target->hitpoints . " Health <br> ");
+        print_r($target->name . "Has" . $target->hitpoints . " Health <br> ");
 
         if ($this->energyType->getname() == $target->weakness->getWeaknessType()) {
             $damage = $damage * $target->weakness->getWeaknessValue();

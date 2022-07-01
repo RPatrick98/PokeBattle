@@ -36,9 +36,10 @@ $charmeleon  = new pokemon(
     new resistance("Lightning", 10)
 );
 
-
-
 $pikachu->attack($charmeleon, 0); 
 $charmeleon->attack($pikachu, 1);
+
+
+
 
 pokemon::returnPokemonPopulation();
